@@ -10,16 +10,45 @@ import net.minecraft.util.registry.Registry;
 
 import java.lang.reflect.Type;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Predicate;
 
 @JsonAdapter(Crop.Adapter.class)
 public class Crop implements Predicate<BlockState> {
 
-    private final BlockState mature;
+    private BlockState mature;
     private Block block;
 
-    public Crop(BlockState mature) {
-        this.mature = mature;
+    public Crop(Identifier name, JsonObject states) {
+        RegistryWaiter.waitFor(
+                blocks -> {
+                    Block block = blocks.apply(name);
+                    setMature(block, states);
+                },
+                (id, replacement) ->
+                {
+                    setMature(replacement, states);
+                },
+                Registry.BLOCK, name);
+    }
+
+    public Crop(BlockState state) {
+        this.mature = state;
+    }
+
+    private void setMature(Block block, JsonObject states) {
+        BlockState state = block.getDefaultState();
+        for (Map.Entry<String, JsonElement> e : states.entrySet()) {
+            Property property = block.getStateManager().getProperty(e.getKey());
+            if (property != null) {
+                String valueString = e.getValue().getAsString();
+                Comparable value = (Comparable) property.parse(valueString).get();
+                state = state.with(property, value);
+            }
+        }
+        this.mature = state;
+        Harvest.debug("Registered crop " + this + " from config");
+
     }
 
     public BlockState getMature() {
@@ -37,25 +66,20 @@ public class Crop implements Predicate<BlockState> {
 
     @Override
     public String toString() {
-        return "Crop{" + mature.toString() + "}";
+        if (mature != null) {
+            return "Crop{" + mature + "}";
+        } else {
+            return "Crop{null}";
+        }
     }
 
     public static class Adapter implements JsonSerializer<Crop>, JsonDeserializer<Crop> {
         @Override
         public Crop deserialize(JsonElement element, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject json = element.getAsJsonObject();
-            Block block = Registry.BLOCK.get(new Identifier(json.getAsJsonPrimitive("block").getAsString()));
-            BlockState state = block.getDefaultState();
+            Identifier blockID = new Identifier(json.getAsJsonPrimitive("block").getAsString());
             JsonObject stateObject = json.getAsJsonObject("states");
-            for (Map.Entry<String, JsonElement> e : stateObject.entrySet()) {
-                Property property = block.getStateManager().getProperty(e.getKey());
-                if (property != null) {
-                    String valueString = e.getValue().getAsString();
-                    Comparable value = (Comparable) property.parse(valueString).get();
-                    state = state.with(property, value);
-                }
-            }
-            return new Crop(state);
+            return new Crop(blockID, stateObject);
         }
 
         @Override

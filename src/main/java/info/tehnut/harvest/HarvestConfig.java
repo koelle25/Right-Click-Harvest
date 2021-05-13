@@ -8,8 +8,8 @@ import java.util.List;
 
 public class HarvestConfig {
 
-    private float exhaustionPerHarvest;
-    private boolean additionalLogging;
+    private final float exhaustionPerHarvest;
+    private final boolean additionalLogging;
     private List<Crop> crops;
 
     public HarvestConfig(float exhaustionPerHarvest, boolean additionalLogging, List<Crop> crops) {

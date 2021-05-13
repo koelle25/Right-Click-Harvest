@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
@@ -65,6 +66,7 @@ public class Harvest implements ModInitializer {
 
     @Override
     public void onInitialize() {
+
         System.out.println(Block.class.getCanonicalName());
         File configFile = new File(FabricLoader.getInstance().getConfigDirectory(), "harvest.json");
         try (FileReader reader = new FileReader(configFile)) {
@@ -100,7 +102,7 @@ public class Harvest implements ModInitializer {
         });
     }
 
-    static void debug(String message, Object... args) {
+    public static void debug(String message, Object... args) {
         if (config.additionalLogging())
             LOGGER.info("[DEBUG] " + message, args);
     }
