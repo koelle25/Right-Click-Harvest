@@ -7,11 +7,9 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-def build_number = System.getenv('BUILD_NUMBER') != null ? System.getenv('BUILD_NUMBER') : 'CUSTOM'
-
 group = package_group
 archivesBaseName = "${mod_name}-fabric"
-version = "${mc_version}-${mod_version}-${build_number}"
+version = "${mc_version}-${mod_version}"
 
 minecraft {
     refmapName = mod_name.toLowerCase() + '-refmap.json'

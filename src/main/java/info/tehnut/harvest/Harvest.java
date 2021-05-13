@@ -105,7 +105,7 @@ public class Harvest implements ModInitializer {
     }
 
     public static void debug(String message, Object... args) {
-        if (config.additionalLogging())
+        if (config != null && config.additionalLogging())
             LOGGER.info("[DEBUG] " + message, args);
     }
 }
