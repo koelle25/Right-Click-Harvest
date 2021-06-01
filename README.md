@@ -1,4 +1,4 @@
-# Harvest [![](http://cf.way2muchnoise.eu/full_simpleharvest_downloads.svg)![](http://cf.way2muchnoise.eu/versions/simpleharvest.svg)](https://minecraft.curseforge.com/projects/simpleharvest)
+# Harvest [![](https://cf.way2muchnoise.eu/full_481720_downloads.svg)![](http://cf.way2muchnoise.eu/versions/simplerharvest.svg)](https://minecraft.curseforge.com/projects/simplerharvest)
 
 Adds right click crop harvesting that is configurable via a JSON file.
 
