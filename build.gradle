@@ -106,6 +106,7 @@ task publishModrinth(type: com.modrinth.minotaur.TaskModrinthUpload) {
     addGameVersion("1.16.4")
     addGameVersion("1.16.5")
     addLoader('fabric')
+}
 
 curseforge {
     if (ENV.CURSEFORGE_TOKEN)
