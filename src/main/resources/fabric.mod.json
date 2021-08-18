@@ -9,6 +9,7 @@
     "issues": "https://github.com/hugeblank/Harvest/issues",
     "sources": "https://github.com/hugeblank/Harvest"
   },
+  "icon": "assets/harvest/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
