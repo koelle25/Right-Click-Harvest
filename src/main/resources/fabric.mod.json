@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "id": "harvest",
+  "id": "right-click-harvest",
   "version": "1.0.1",
-  "name": "Harvest",
-  "description": "Configurable right click crop harvesting ",
+  "name": "Right-Click-Harvest",
+  "description": "Configurable right click crop harvesting",
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/simplerharvest",
-    "issues": "https://github.com/hugeblank/Harvest/issues",
-    "sources": "https://github.com/hugeblank/Harvest"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/right-click-harvest",
+    "issues": "https://github.com/koelle25/Right-Click-Harvest/issues",
+    "sources": "https://github.com/koelle25/Right-Click-Harvest"
   },
   "icon": "assets/harvest/icon.png",
   "environment": "*",
