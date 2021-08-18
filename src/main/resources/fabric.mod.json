@@ -9,6 +9,7 @@
     "issues": "https://github.com/TehNut/Harvest/issues",
     "sources": "https://github.com/TehNut/Harvest"
   },
+  "environment": "*",
   "entrypoints": {
     "main": [
       "info.tehnut.harvest.Harvest"
