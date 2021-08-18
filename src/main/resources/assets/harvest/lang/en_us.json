@@ -1,0 +1,15 @@
+{
+    "text.autoconfig.simplerharvest.option.exhaustionPerHarvest": "Exhaustion per harvest",
+    "text.autoconfig.simplerharvest.option.additionalLogging": "Debug logging",
+    "text.autoconfig.simplerharvest.option.crops": "Crops configuration",
+    "text.autoconfig.simplerharvest.option.crops.wheatEnabled": "Enable harvest on Wheat",
+    "text.autoconfig.simplerharvest.option.crops.wheatStage": "Stage at which Wheat can be harvested",
+    "text.autoconfig.simplerharvest.option.crops.netherWartEnabled": "Enable harvest on Nether Wart",
+    "text.autoconfig.simplerharvest.option.crops.netherWartStage": "Stage at which Nether Wart can be harvested",
+    "text.autoconfig.simplerharvest.option.crops.carrotEnabled": "Enable harvest on Carrots",
+    "text.autoconfig.simplerharvest.option.crops.carrotStage": "Stage at which Carrots can be harvested",
+    "text.autoconfig.simplerharvest.option.crops.potatoEnabled": "Enable harvest on Potatoes",
+    "text.autoconfig.simplerharvest.option.crops.potatoStage": "Stage at which Potatoes can be harvested",
+    "text.autoconfig.simplerharvest.option.crops.beetrootEnabled": "Enable harvest on Beetroot",
+    "text.autoconfig.simplerharvest.option.crops.beetrootStage": "Stage at which Beetroot can be harvested"
+}

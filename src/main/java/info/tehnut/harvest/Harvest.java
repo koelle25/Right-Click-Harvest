@@ -1,46 +1,37 @@
 package info.tehnut.harvest;
 
 import com.google.common.base.Joiner;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import info.tehnut.harvest.config.HarvestConfig;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
-import net.fabricmc.fabric.api.tag.TagRegistry;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.CropBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.tag.Tag;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 
 public class Harvest implements ModInitializer {
 
     // Up top against convention so DEFAULT_HANDLER can access it
-    public static HarvestConfig config;
+    public static HarvestConfig CONFIG;
 
     public static final Logger LOGGER = LogManager.getLogger("Harvest");
     public static final IReplantHandler DEFAULT_HANDLER = (world, hit, state, player, tileEntity) -> {
-        Crop crop = config.getCrops().stream().filter(c -> c.test(state)).findFirst().orElse(null);
+        Crop crop = CONFIG.getCrops().stream().filter(c -> c.test(state)).findFirst().orElse(null);
         if (crop == null) {
             debug("No crop found for state {}", state);
-            debug("Valid crops {}", Joiner.on(" | ").join(config.getCrops()));
+            debug("Valid crops {}", Joiner.on(" | ").join(CONFIG.getCrops()));
             return ActionResult.PASS;
         }
 
@@ -70,19 +61,12 @@ public class Harvest implements ModInitializer {
     public void onInitialize() {
 
         System.out.println(Block.class.getCanonicalName());
-        File configFile = new File(FabricLoader.getInstance().getConfigDirectory(), "harvest.json");
-        try (FileReader reader = new FileReader(configFile)) {
-            config = new Gson().fromJson(reader, HarvestConfig.class);
+        AutoConfig.register(HarvestConfig.class, GsonConfigSerializer::new);
+        CONFIG = AutoConfig.getConfigHolder(HarvestConfig.class).getConfig();
+
+        if (CONFIG != null) {
             debug("Successfully loaded config");
-            debug("Currently enabled crops: {}", Joiner.on(" | ").join(config.getCrops()));
-        } catch (IOException e) {
-            config = new HarvestConfig();
-            debug("Config not found, generating a new one.");
-            try (FileWriter writer = new FileWriter(configFile)) {
-                writer.write(new GsonBuilder().setPrettyPrinting().create().toJson(config));
-            } catch (IOException e2) {
-                debug("Failed to generate new config", e2);
-            }
+            debug("Currently enabled crops: {}", Joiner.on(" | ").join(CONFIG.getCrops()));
         }
 
         UseBlockCallback.EVENT.register((player, world, hand, hit) -> {
@@ -97,7 +81,7 @@ public class Harvest implements ModInitializer {
             ActionResult result = handler.handlePlant((ServerWorld) world, hit, state, player, world.getBlockEntity(hit.getBlockPos()));
             if (result == ActionResult.SUCCESS) {
                 player.swingHand(hand);
-                player.addExhaustion(config.getExhaustionPerHarvest());
+                player.addExhaustion(CONFIG.exhaustionPerHarvest);
             }
             debug("Attempted crop harvest with result {} has completed", result);
             return result;
@@ -105,7 +89,7 @@ public class Harvest implements ModInitializer {
     }
 
     public static void debug(String message, Object... args) {
-        if (config != null && config.additionalLogging())
+        if (CONFIG != null && CONFIG.additionalLogging)
             LOGGER.info("[DEBUG] " + message, args);
     }
 }

@@ -1,0 +1,15 @@
+{
+    "text.autoconfig.simplerharvest.option.exhaustionPerHarvest": "Erschöpfung pro Ernte",
+    "text.autoconfig.simplerharvest.option.additionalLogging": "Debug-Logging",
+    "text.autoconfig.simplerharvest.option.crops": "Crop-Konfiguration",
+    "text.autoconfig.simplerharvest.option.crops.wheatEnabled": "Ernte von Weizen aktivieren",
+    "text.autoconfig.simplerharvest.option.crops.wheatStage": "Stadium ab dem Weizen geernet werden kann",
+    "text.autoconfig.simplerharvest.option.crops.netherWartEnabled": "Ernte von Netherwarzen aktivieren",
+    "text.autoconfig.simplerharvest.option.crops.netherWartStage": "Stadium ab dem Netherwarzen geernet werden können",
+    "text.autoconfig.simplerharvest.option.crops.carrotEnabled": "Ernte von Karotten aktivieren",
+    "text.autoconfig.simplerharvest.option.crops.carrotStage": "Stadium ab dem Karotten geernet werden können",
+    "text.autoconfig.simplerharvest.option.crops.potatoEnabled": "Ernte von Kartoffeln aktivieren",
+    "text.autoconfig.simplerharvest.option.crops.potatoStage": "Stadium ab dem Kartoffeln geernet werden können",
+    "text.autoconfig.simplerharvest.option.crops.beetrootEnabled": "Ernte von Roter Beete aktivieren",
+    "text.autoconfig.simplerharvest.option.crops.beetrootStage": "Stadium ab dem Rote Beete geernet werden kann"
+}

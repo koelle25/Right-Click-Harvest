@@ -1,8 +1,6 @@
 # Harvest [![](http://cf.way2muchnoise.eu/full_simplerharvest_downloads.svg)![](http://cf.way2muchnoise.eu/versions/simplerharvest.svg)](https://www.curseforge.com/minecraft/mc-mods/simplerharvest)
 
-Adds right click crop harvesting that is configurable via a JSON file.
-
-This branch depends on [Fabric-Loader](https://fabricmc.net/) and [Fabric](https://minecraft.curseforge.com/projects/fabric).
+Simple right-click crop harvesting and replanting. Configurable via ModMenu (or by manually editing the JSON config file).
 
 ## FAQ
 - Client or Server side?
@@ -17,37 +15,17 @@ This branch depends on [Fabric-Loader](https://fabricmc.net/) and [Fabric](https
 {
   "exhaustionPerHarvest": 0.005,
   "additionalLogging": false,
-  "crops": [
-    {
-      "block": "minecraft:wheat",
-      "states": {
-        "age": "7"
-      }
-    },
-    {
-      "block": "minecraft:nether_wart",
-      "states": {
-        "age": "3"
-      }
-    },
-    {
-      "block": "minecraft:carrots",
-      "states": {
-        "age": "7"
-      }
-    },
-    {
-      "block": "minecraft:potatoes",
-      "states": {
-        "age": "7"
-      }
-    },
-    {
-      "block": "minecraft:beetroots",
-      "states": {
-        "age": "3"
-      }
-    }
-  ]
+  "crops": {
+    "wheatEnabled": true,
+    "wheatStage": 7,
+    "netherWartEnabled": true,
+    "netherWartStage": 3,
+    "carrotEnabled": true,
+    "carrotStage": 7,
+    "potatoEnabled": true,
+    "potatoStage": 7,
+    "beetrootEnabled": true,
+    "beetrootStage": 3
+  }
 }
 ```

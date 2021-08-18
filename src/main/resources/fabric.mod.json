@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "right-click-harvest",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "name": "Right-Click-Harvest",
   "description": "Configurable right click crop harvesting",
   "contact": {
@@ -14,18 +14,26 @@
   "entrypoints": {
     "main": [
       "info.tehnut.harvest.Harvest"
+    ],
+    "modmenu": [
+        "info.tehnut.harvest.config.ModMenuIntegration"
     ]
   },
   "authors": [
     "TehNut",
-    "hugeblank"
+    "hugeblank",
+    "koelle25"
   ],
   "contributors": [
     "InsomniaKitten"
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.16"
+    "minecraft": ">=1.16",
+    "cloth-config2": "5.x"
+  },
+  "suggests": {
+    "modmenu": ">=2.0.0"
   },
   "license": "MIT"
 }
