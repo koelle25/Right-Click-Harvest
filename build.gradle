@@ -1,18 +1,18 @@
 plugins {
     id 'fabric-loom' version '0.7-SNAPSHOT'
+    id 'maven-publish'
     id "com.matthewprenger.cursegradle" version "1.4.0"
-    id "maven-publish"
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-group = package_group
-archivesBaseName = "${mod_name}-fabric"
-version = "${mc_version}-${mod_version}"
+archivesBaseName = project.archives_base_name
+version = "${project.mod_version}+${project.minecraft_version}-fabric"
+group = project.maven_group
 
 minecraft {
-    refmapName = mod_name.toLowerCase() + '-refmap.json'
+    refmapName = archives_base_name.toLowerCase() + '-refmap.json'
 }
 
 repositories {
@@ -20,26 +20,52 @@ repositories {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${mc_version}"
-    mappings "net.fabricmc:yarn:${mc_version}+build.${mappings_version}:v2"
-    modCompile "net.fabricmc:fabric-loader:${loader_version}"
-    modCompile "net.fabricmc.fabric-api:fabric-api:${api_version}"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+    //Fabric api
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 }
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allJava
+// ensure that the encoding is set to UTF-8, no matter what the system default is
+// this fixes some edge cases with special characters not displaying correctly
+// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+// if it is present.
+// If you remove this line, sources will not be generated.
+task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+jar {
+    from "LICENSE.txt"
 }
 
 publishing {
     tasks.publish.dependsOn 'build'
+
     publications {
         mavenJava(MavenPublication) {
-            artifact remapJar
-            artifact sourcesJar
+            // add all the jars that should be included when publishing to maven
+            artifact(remapJar) {
+                builtBy remapJar
+            }
+            artifact(sourcesJar) {
+                builtBy sourcesJar
+            }
         }
     }
+
+    // Select the repositories you want to publish to
+    // To publish to maven local, no extra repositories are necessary. Just use the task `publishToMavenLocal`.
     repositories {
+        // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
         if (project.hasProperty('maven_repo')) {
             maven { url maven_repo }
         } else {
@@ -48,17 +74,21 @@ publishing {
     }
 }
 
+def ENV = System.getenv()
+
 curseforge {
-    if (project.hasProperty('curse_key_TehNut'))
-        apiKey = project.curse_key_TehNut
+    if (ENV.CURSEFORGE_TOKEN)
+        apiKey = ENV.CURSEFORGE_TOKEN
 
     project {
         id = "${curse_id}"
-        releaseType = 'release'
+        changelog = "A changelog can be found at https://github.com/hugeblank/Harvest/releases"
+        releaseType = "release"
 
         addGameVersion "1.16.1"
         addGameVersion "Java 8"
         addArtifact sourcesJar
+
         mainArtifact(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"))
 
         afterEvaluate {
