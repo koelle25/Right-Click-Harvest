@@ -23,8 +23,9 @@
   "contributors": [
     "InsomniaKitten"
   ],
-  "requires": {
-    "fabric": "*"
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.16"
   },
   "license": "MIT"
 }
