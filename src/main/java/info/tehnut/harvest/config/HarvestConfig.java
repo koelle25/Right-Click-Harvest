@@ -10,7 +10,7 @@ import net.minecraft.state.property.Properties;
 
 import java.util.List;
 
-@Config(name = "simplerharvest")
+@Config(name = "right-click-harvest")
 public class HarvestConfig implements ConfigData {
 
     public float exhaustionPerHarvest = 0.005f;
