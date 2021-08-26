@@ -1,4 +1,4 @@
-# Right-Click Harvest [![](https://cf.way2muchnoise.eu/full_right-click-harvest_downloads.svg)![](https://cf.way2muchnoise.eu/versions/right-click-harvest.svg)](https://www.curseforge.com/minecraft/mc-mods/right-click-harvest)
+# Right-Click Harvest [![](http://cf.way2muchnoise.eu/full_right-click-harvest_downloads.svg)![](http://cf.way2muchnoise.eu/versions/right-click-harvest.svg)](https://www.curseforge.com/minecraft/mc-mods/right-click-harvest)
 
 Simple right-click crop harvesting and replanting. Configurable via ModMenu (or by manually editing the JSON config file).
 
