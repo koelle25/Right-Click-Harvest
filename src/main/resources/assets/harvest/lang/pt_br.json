@@ -1,0 +1,15 @@
+{
+    "text.autoconfig.simplerharvest.option.exhaustionPerHarvest": "Exaustão por colheita",
+    "text.autoconfig.simplerharvest.option.additionalLogging": "Registro de depuração",
+    "text.autoconfig.simplerharvest.option.crops": "Definições de colheita",
+    "text.autoconfig.simplerharvest.option.crops.wheatEnabled": "Permitir colheita de trigo",
+    "text.autoconfig.simplerharvest.option.crops.wheatStage": "Estágio em que o trigo pode ser colhido",
+    "text.autoconfig.simplerharvest.option.crops.netherWartEnabled": "Permitir colheita de fundo do Nether",
+    "text.autoconfig.simplerharvest.option.crops.netherWartStage": "Estágio em que o fungo do Nether pode ser colhido.",
+    "text.autoconfig.simplerharvest.option.crops.carrotEnabled": "Permitir colheita de cenoura",
+    "text.autoconfig.simplerharvest.option.crops.carrotStage": "Estágio em que cenouras podem ser colhidas.",
+    "text.autoconfig.simplerharvest.option.crops.potatoEnabled": "Permitir colheita de batata",
+    "text.autoconfig.simplerharvest.option.crops.potatoStage": "Estágio em que batatas podem ser colhidas.",
+    "text.autoconfig.simplerharvest.option.crops.beetrootEnabled": "Permitir colheita de beterraba",
+    "text.autoconfig.simplerharvest.option.crops.beetrootStage": "Estágio em que beterrabas podem ser colhidas."
+}
