@@ -15,7 +15,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build and publish with Gradle
-        run: ./gradlew build publishModrinth curseforge --stacktrace
+        run: ./gradlew build publishModrinth curseforge --no-daemon --stacktrace
         env:
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
