@@ -1,12 +1,12 @@
 plugins {
-    id 'fabric-loom' version '0.9.+'
+    id 'fabric-loom' version '0.10-SNAPSHOT'
     id 'maven-publish'
     id "com.matthewprenger.cursegradle" version "1.4.0"
     id "com.modrinth.minotaur" version "1.2.1"
 }
 
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
 version = "${project.mod_version}+${project.minecraft_version}-fabric"
@@ -18,7 +18,7 @@ loom {
 
 repositories {
     maven { url = "https://maven.shedaniel.me/" }
-    maven { url = "https://maven.terraformersmc.com/" }
+    maven { url = "https://maven.terraformersmc.com/releases" }
 }
 
 dependencies {
@@ -41,7 +41,7 @@ dependencies {
 // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
-    options.release = 16
+    options.release = 17
 }
 
 java {
@@ -102,8 +102,8 @@ task publishModrinth(type: com.modrinth.minotaur.TaskModrinthUpload) {
     versionType = "RELEASE"
 
     uploadFile = remapJar
-    addGameVersion("1.17")
-    addGameVersion("1.17.1")
+    addGameVersion("1.18")
+    addGameVersion("1.18.1")
     addLoader('fabric')
 }
 
@@ -116,9 +116,9 @@ curseforge {
         changelog = "A changelog can be found at https://github.com/koelle25/Right-Click-Harvest/releases"
         releaseType = "release"
 
-        addGameVersion "1.17"
-        addGameVersion "1.17.1"
-        addGameVersion "Java 16"
+        addGameVersion "1.18"
+        addGameVersion "1.18.1"
+        addGameVersion "Java 17"
         addGameVersion "Fabric"
 
         mainArtifact(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"))

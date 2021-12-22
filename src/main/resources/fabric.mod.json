@@ -29,11 +29,11 @@
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.17.1",
-    "cloth-config2": ">=5.0.38"
+    "minecraft": "1.18.x",
+    "cloth-config2": ">=6.0.42"
   },
   "suggests": {
-    "modmenu": ">=2.0.4"
+    "modmenu": ">=3.0.0"
   },
   "license": "MIT"
 }
