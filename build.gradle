@@ -1,8 +1,8 @@
 plugins {
-    id 'fabric-loom' version '0.10-SNAPSHOT'
+    id 'fabric-loom' version '0.11-SNAPSHOT'
     id 'maven-publish'
     id "com.matthewprenger.cursegradle" version "1.4.0"
-    id "com.modrinth.minotaur" version "1.2.1"
+    id "com.modrinth.minotaur" version "2.1.1"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -111,8 +111,7 @@ task publishModrinth(type: com.modrinth.minotaur.TaskModrinthUpload) {
     versionType = "RELEASE"
 
     uploadFile = remapJar
-    addGameVersion("1.18")
-    addGameVersion("1.18.1")
+    addGameVersion("1.18.2")
     addLoader('fabric')
 }
 
@@ -125,8 +124,7 @@ curseforge {
         changelog = "A changelog can be found at https://github.com/koelle25/Right-Click-Harvest/releases"
         releaseType = "release"
 
-        addGameVersion "1.18"
-        addGameVersion "1.18.1"
+        addGameVersion "1.18.2"
         addGameVersion "Java 17"
         addGameVersion "Fabric"
 
