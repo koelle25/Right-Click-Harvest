@@ -2,14 +2,26 @@
   "schemaVersion": 1,
   "id": "right-click-harvest",
   "version": "1.1.0",
+
   "name": "Right-Click-Harvest",
   "description": "Configurable right click crop harvesting",
+  "authors": [
+    "TehNut",
+    "hugeblank",
+    "koelle25"
+  ],
+  "contributors": [
+    "InsomniaKitten"
+  ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/right-click-harvest",
     "issues": "https://github.com/koelle25/Right-Click-Harvest/issues",
     "sources": "https://github.com/koelle25/Right-Click-Harvest"
   },
+
+  "license": "MIT",
   "icon": "assets/harvest/icon.png",
+
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -19,14 +31,7 @@
         "info.tehnut.harvest.config.ModMenuIntegration"
     ]
   },
-  "authors": [
-    "TehNut",
-    "hugeblank",
-    "koelle25"
-  ],
-  "contributors": [
-    "InsomniaKitten"
-  ],
+
   "depends": {
     "fabric": "*",
     "minecraft": "1.18.x",
@@ -34,6 +39,5 @@
   },
   "suggests": {
     "modmenu": ">=3.0.0"
-  },
-  "license": "MIT"
+  }
 }
