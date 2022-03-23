@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "right-click-harvest",
-  "version": "1.1.0",
+  "version": "1.2.0",
 
   "name": "Right-Click-Harvest",
   "description": "Configurable right click crop harvesting",
