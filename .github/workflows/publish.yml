@@ -3,7 +3,7 @@ name: Release
 on: [ workflow_dispatch ]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,7 +15,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build and publish with Gradle
-        run: ./gradlew build publishModrinth curseforge --no-daemon --stacktrace
+        run: ./gradlew build modrinth curseforge --no-daemon --stacktrace
         env:
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
