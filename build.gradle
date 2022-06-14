@@ -116,7 +116,7 @@ curseforge {
 
     project {
         id = "${curse_id}"
-        changelog = "A changelog can be found at https://github.com/koelle25/Right-Click-Harvest/releases"
+        changelog = "A changelog can be found at https://github.com/koellecraft/Right-Click-Harvest/releases"
         releaseType = "release"
 
         addGameVersion "1.18.2"
